@@ -14,19 +14,21 @@
 -->
 
 <script type="text/javascript">
-    RED.nodes.registerType('simple-queue', {
+    RED.nodes.registerType('cgpl-queue', {
         icon: "simple-message-queue.svg",
         category: 'storage',
         color: '#ff9900',
         defaults: {
             name: { value: "" },
+            backupMessages: {value: true },
+            maxMsgLimit: { value: 0 },
             firstMessageBypass: { value: true },
             bypassInterval: { value: "0", validate: RED.validators.regex(/^\+?(0|[1-9]\d*)$/) },
         },
         inputs: 1,
-        outputs: 1,
+        outputs: 2,
         label: function () {
-            return (this.name || "simple queue");
+            return (this.name || "cgpl simple queue");
         },
         labelStyle: function () {
             return this.name ? "node_label_italic" : "";
@@ -34,7 +36,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="simple-queue">
+<script type="text/html" data-template-name="cgpl-queue">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name"/>
@@ -44,12 +46,20 @@
         <label for="node-input-firstMessageBypass" style="width:70%;"></i> Bypass first message?</label>
     </div>
     <div class="form-row">
+        <input type="checkbox" id="node-input-backupMessages" style="display:inline-block; width:auto; vertical-align:top;" />
+        <label for="node-input-backupMessages" style="width:70%;"></i> Backup Messages?</label>
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxMsgLimit" style="width:70%;"><i class="fa fa-clock-o"></i> Max Message store Limit(0 means No Limit)</label>
+        <input type="text" id="node-input-maxMsgLimit" placeholder="Max Message Limit"/>
+    </div>
+    <div class="form-row">
         <label for="node-input-bypassInterval" style="width:70%;"><i class="fa fa-clock-o"></i> Bypass interval (milliseconds):</label>
         <input type="text" id="node-input-bypassInterval" placeholder="Bypass interval"/>
     </div>
 </script>
 
-<script type="text/html" data-help-name="simple-queue">
+<script type="text/html" data-help-name="cgpl-queue">
   <p>
   	Use this node to store incoming messages in memory queue. Use a feedback from a following action or message with trigger property to release the next message.
   	<br/><br/>

@@ -12,7 +12,7 @@
   ],
   "node-red": {
     "nodes": {
-      "simple-queue": "simple-message-queue.js"
+      "cgpl-queue": "simple-message-queue.js"
     }
   },
   "bugs": {
