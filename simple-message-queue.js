@@ -91,9 +91,9 @@ module.exports = function (RED) {
 			} else if (msg.hasOwnProperty("queueCount")) {
 				msg["_queueCount"] = context.queue.length;
 				node.send([msg,null]);
-			} else if (msg.hasOwnProperty("set_capacity")) {
-				context.capacity = msg.set_capacity; 
-				node.send([msg,null]);
+			// } else if (msg.hasOwnProperty("set_capacity")) {
+			// 	context.capacity = msg.set_capacity; 
+			// 	node.send([msg,null]);
 			} else if (msg.hasOwnProperty("bypassInterval")) {
 				let re = /^\+?(0|[1-9]\d*)$/;
 				if (re.test(msg.bypassInterval)) {
