@@ -1,4 +1,5 @@
-node-red-contrib-simple-message-queue
+@cgpl/nodered-message-queue
+**Forked and modified**
 ================================
 
 [![NPM version](http://img.shields.io/npm/v/node-red-contrib-simple-message-queue.svg)](https://www.npmjs.com/package/node-red-contrib-simple-message-queue)
